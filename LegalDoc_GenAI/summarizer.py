@@ -8,9 +8,11 @@ from datetime import date
 from pydantic import BaseModel, Field
 from typing import Optional
 
+LLM_MODEL = os.getenv("LLM_MODEL", "gemini-2.0-flash")
+
 def get_model(api_key: str):
     return ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
+        model=LLM_MODEL,
         temperature=0.0,
         max_output_tokens=8192,
         google_api_key=api_key
